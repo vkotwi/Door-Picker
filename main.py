@@ -7,6 +7,7 @@ from tkinter import ttk
 
 # Import pages
 from addDataPage import AddDataPage
+from doorPickerMenu import DoorPickerMenu
 
 # TODO
 # Add ability to pick room and automatically increments with next button if different room number not selected
