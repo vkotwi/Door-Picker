@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
+
 # Allows correction of door if wrong door is picked
 class DoorPickerMenu(tk.Frame):
     def __init__(self, parent, controller):

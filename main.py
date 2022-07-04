@@ -43,10 +43,10 @@ class App(tk.Tk):
 
     # Brings new frame to top of window
     def show_frame(self, container):
-        if container:
-            frame = self.frames[MainMenu]
-        else:
+        try:
             frame = self.frames[container]  # gets new frame to display
+        except KeyError:
+            frame = self.frames[MainMenu]
         frame.tkraise()  # brings new frame to top of window
         # ^^ better way of doing this?
 

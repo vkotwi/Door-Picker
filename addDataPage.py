@@ -9,8 +9,8 @@ class AddDataPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         lb_data = ttk.Label(self, text="Add Data")
 
-        btn_back_menu = tk.Button(self, text="Back to Menu",
-                                  command=lambda: controller.show_frame(False))
+        btn_back_menu = ttk.Button(self, text="Back to Menu",
+                                   command=lambda: controller.show_frame(False))
 
         lb_data.pack(pady=10, padx=10)
         btn_back_menu.pack(pady=10, padx=10)
