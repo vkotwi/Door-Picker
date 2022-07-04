@@ -31,7 +31,7 @@ class App(tk.Tk):
             self.frames[f] = frame
 
             # Assigns frame to specirfic position in grid
-            frame.grid(row=0, column=0, sticky=tk.W) # nswe stretches to all sides of window
+            frame.grid(row=0, column=0, sticky="nsew") # nswe stretches to all sides of window
 
         self.show_frame(MainMenu)
 
@@ -70,7 +70,7 @@ class AddDataPage(tk.Frame):
 # Page that takes in user input to figure out which door to pick
 # Allows correction of door if wrong door is picked
 class DoorPickerMenu(tk.Frame):
-    def __init__(self, parent, controllers):
+    def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         lb_Picker = tk.Label(self, text="Door Picker", font=FONT) # TODO: grey out if no data
 
