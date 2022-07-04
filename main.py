@@ -24,12 +24,14 @@ class App(tk.Tk):
 
         self.frames = {} # stores different "pages"
 
-        frame = MainMenu(container, self)
+        for f in (MainMenu, AddDataPage):
 
-        self.frames[MainMenu] = frame
+            frame = f(container, self)
 
-        # Assigns frame to specirfic position in grid
-        frame.grid(row=0, column=0, sticky=tk.W) # nswe stretches to all sides of window
+            self.frames[f] = frame
+
+            # Assigns frame to specirfic position in grid
+            frame.grid(row=0, column=0, sticky=tk.W) # nswe stretches to all sides of window
 
         self.show_frame(MainMenu)
 
@@ -43,15 +45,36 @@ class App(tk.Tk):
 
 # Main page class -> move to own file
 class MainMenu(tk.Frame):
-    def __init__(self, parent, controllers):
+    def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        btn_AddData = tk.Button(self, text="Add Data", command=None, font=FONT)
+        btn_AddData = tk.Button(self, text="Add Data",
+                                command=lambda: App.show_frame(self, controller.show_frame(AddDataPage)),
+                                font=FONT)
+        
         btn_NewPicker = tk.Button(self, text="Door Picker", command=None, font=FONT) # TODO: grey out if no data
 
         btn_AddData.pack(pady=10, padx=10)
         btn_NewPicker.pack(pady=10, padx=10)
+
+
+# Page that allows user to add data without trying to work out which door to pick
+class AddDataPage(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        tk.Frame.__init__(self, parent)
+        lb_Data = tk.Label(self, text="Add Data", font=FONT) # TODO: grey out if no data
+
+        lb_Data.pack(pady=10, padx=10)
         
-        
+
+# Page that takes in user input to figure out which door to pick
+# Allows correction of door if wrong door is picked
+class DoorPickerMenu(tk.Frame):
+    def __init__(self, parent, controllers):
+        tk.Frame.__init__(self, parent)
+        lb_Picker = tk.Label(self, text="Door Picker", font=FONT) # TODO: grey out if no data
+
+        lb_Picker.pack(pady=10, padx=10)
 
 if __name__=='__main__':
     app = App()
