@@ -53,7 +53,7 @@ class MainMenu(tk.Frame):
         
         btn_NewPicker = tk.Button(self, text="Door Picker",
                                   command=lambda: App.show_frame(self, controller.show_frame(DoorPickerMenu)),
-                                  font=FONT) # TODO: grey out if no data
+                                  font=FONT) 
 
         btn_AddData.pack(pady=10, padx=10)
         btn_NewPicker.pack(pady=10, padx=10)
@@ -64,9 +64,14 @@ class AddDataPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         tk.Frame.__init__(self, parent)
-        lb_Data = tk.Label(self, text="Add Data", font=FONT) # TODO: grey out if no data
+        lb_Data = tk.Label(self, text="Add Data", font=FONT)
+
+        btn_BackMenu = tk.Button(self, text="Back to Menu",
+                                  command=lambda: App.show_frame(self, controller.show_frame(MainMenu)),
+                                  font=FONT)
 
         lb_Data.pack(pady=10, padx=10)
+        btn_BackMenu.pack(pady=10, padx=10)        
         
 
 # Page that takes in user input to figure out which door to pick
@@ -74,9 +79,14 @@ class AddDataPage(tk.Frame):
 class DoorPickerMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        lb_Picker = tk.Label(self, text="Door Picker", font=FONT) # TODO: grey out if no data
+        lb_Picker = tk.Label(self, text="Door Picker", font=FONT)
+
+        btn_BackMenu = tk.Button(self, text="Back to Menu",
+                                  command=lambda: App.show_frame(self, controller.show_frame(MainMenu)),
+                                  font=FONT)
 
         lb_Picker.pack(pady=10, padx=10)
+        btn_BackMenu.pack(pady=10, padx=10)
 
 if __name__=='__main__':
     app = App()
