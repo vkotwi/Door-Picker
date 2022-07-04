@@ -5,10 +5,13 @@ from tkinter import ttk
 # Import modules
 # from modules.main_page import main_menu
 
-### TODO
+# Import pages
+from addDataPage import AddDataPage
+
+# TODO
 # Add ability to pick room and automatically increments with next button if different room number not selected
 # save info to SQL database - find way to use joins?
-# Door picker window whould have option to correct door to update data
+# Door picker window would have option to correct door to update data
 
 FONT = ("Arial", 12)
 
@@ -39,7 +42,10 @@ class App(tk.Tk):
 
     # Brings new frame to top of window
     def show_frame(self, container):
-        frame = self.frames[container]  # gets new frame to display
+        if container:
+            frame = self.frames[MainMenu]
+        else:
+            frame = self.frames[container]  # gets new frame to display
         frame.tkraise()  # brings new frame to top of window
         # ^^ better way of doing this?
 
@@ -48,30 +54,14 @@ class App(tk.Tk):
 class MainMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        btn_AddData = ttk.Button(self, text="Add Data",
-                                 command=lambda: controller.show_frame(AddDataPage))
+        btn_add_data = ttk.Button(self, text="Add Data",
+                                  command=lambda: controller.show_frame(AddDataPage))
 
-        btn_NewPicker = ttk.Button(self, text="Door Picker",
-                                   command=lambda: controller.show_frame(DoorPickerMenu))
+        btn_new_picker = ttk.Button(self, text="Door Picker",
+                                    command=lambda: controller.show_frame(DoorPickerMenu))
 
-        btn_AddData.pack(pady=10, padx=10)
-        btn_NewPicker.pack(pady=10, padx=10)
-
-
-# Page that allows user to add data without trying to work out which door to pick
-class AddDataPage(tk.Frame):
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        tk.Frame.__init__(self, parent)
-        lb_Data = ttk.Label(self, text="Add Data", font=FONT)
-
-        btn_BackMenu = tk.Button(self, text="Back to Menu",
-                                 command=lambda: controller.show_frame(MainMenu))
-
-        lb_Data.pack(pady=10, padx=10)
-        btn_BackMenu.pack(pady=10, padx=10)
-
-    # Page that takes in user input to figure out which door to pick
+        btn_add_data.pack(pady=10, padx=10)
+        btn_new_picker.pack(pady=10, padx=10)
 
 
 # Allows correction of door if wrong door is picked
