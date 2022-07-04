@@ -1,6 +1,6 @@
 # Import tkinter and GUI override
 import tkinter as tk
-from tkinter.ttk import *
+from tkinter import ttk
 
 # Import modules
 # from modules.main_page import main_menu
@@ -15,6 +15,7 @@ FONT = ("Arial", 12)
 class App(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs) # Creates tk.TK() instance
+        tk.Tk.wm_title(self, "Door Picker 6000")
         container = tk.Frame(self)
 
         container.pack(side="top", fill="both", expand=True)
