@@ -22,6 +22,7 @@ class App(tk.Tk):
         tk.Tk.__init__(self, *args, **kwargs)  # Creates tk.TK() instance
         tk.Tk.iconbitmap(self, default="lop.ico")
         tk.Tk.wm_title(self, "Door Picker 6000")
+        self.geometry('400x600')
         container = tk.Frame(self)
 
         container.pack(side="top", fill="both", expand=True)
