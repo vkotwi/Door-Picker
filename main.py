@@ -16,6 +16,7 @@ FONT = ("Arial", 12)
 class App(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)  # Creates tk.TK() instance
+        tk.Tk.iconbitmap(self, default="lop.ico")
         tk.Tk.wm_title(self, "Door Picker 6000")
         container = tk.Frame(self)
 
@@ -47,13 +48,11 @@ class App(tk.Tk):
 class MainMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        btn_AddData = tk.Button(self, text="Add Data",
-                                command=lambda: controller.show_frame(AddDataPage),
-                                font=FONT)
+        btn_AddData = ttk.Button(self, text="Add Data",
+                                 command=lambda: controller.show_frame(AddDataPage))
 
-        btn_NewPicker = tk.Button(self, text="Door Picker",
-                                  command=lambda: controller.show_frame(DoorPickerMenu),
-                                  font=FONT)
+        btn_NewPicker = ttk.Button(self, text="Door Picker",
+                                   command=lambda: controller.show_frame(DoorPickerMenu))
 
         btn_AddData.pack(pady=10, padx=10)
         btn_NewPicker.pack(pady=10, padx=10)
@@ -64,11 +63,10 @@ class AddDataPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         tk.Frame.__init__(self, parent)
-        lb_Data = tk.Label(self, text="Add Data", font=FONT)
+        lb_Data = ttk.Label(self, text="Add Data", font=FONT)
 
         btn_BackMenu = tk.Button(self, text="Back to Menu",
-                                 command=lambda: controller.show_frame(MainMenu),
-                                 font=FONT)
+                                 command=lambda: controller.show_frame(MainMenu))
 
         lb_Data.pack(pady=10, padx=10)
         btn_BackMenu.pack(pady=10, padx=10)
@@ -80,14 +78,13 @@ class AddDataPage(tk.Frame):
 class DoorPickerMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        lb_Picker = tk.Label(self, text="Door Picker", font=FONT)
+        lb_picker = ttk.Label(self, text="Door Picker", font=FONT)
 
-        btn_BackMenu = tk.Button(self, text="Back to Menu",
-                                 command=lambda: controller.show_frame(MainMenu),
-                                 font=FONT)
+        btn_back_menu = ttk.Button(self, text="Back to Menu",
+                                   command=lambda: controller.show_frame(MainMenu))
 
-        lb_Picker.pack(pady=10, padx=10)
-        btn_BackMenu.pack(pady=10, padx=10)
+        lb_picker.pack(pady=10, padx=10)
+        btn_back_menu.pack(pady=10, padx=10)
 
 
 if __name__ == '__main__':
