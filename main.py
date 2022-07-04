@@ -24,7 +24,7 @@ class App(tk.Tk):
 
         self.frames = {} # stores different "pages"
 
-        for f in (MainMenu, AddDataPage):
+        for f in (MainMenu, AddDataPage, DoorPickerMenu):
 
             frame = f(container, self)
 
@@ -51,7 +51,9 @@ class MainMenu(tk.Frame):
                                 command=lambda: App.show_frame(self, controller.show_frame(AddDataPage)),
                                 font=FONT)
         
-        btn_NewPicker = tk.Button(self, text="Door Picker", command=None, font=FONT) # TODO: grey out if no data
+        btn_NewPicker = tk.Button(self, text="Door Picker",
+                                  command=lambda: App.show_frame(self, controller.show_frame(DoorPickerMenu)),
+                                  font=FONT) # TODO: grey out if no data
 
         btn_AddData.pack(pady=10, padx=10)
         btn_NewPicker.pack(pady=10, padx=10)
