@@ -1,5 +1,5 @@
 "Events","Rainbow Golem","Golden Supporter","Dungeon Queen"
-"Door Events","Door opens immediately","Door shuts briefly and then opens","Door shuts all the way, sounding alarms, and then switches to a rainbow light and opens","Kicked out"
+"Door Events","Door opens immediately","Door shuts and then opens","Door shuts, sounds alarm, and then opens","Kicked out"
 "Notable Rewards","Archangel Wings","Royal Lunatender","Finality Orchestrion Roll","Pixie Wings","On Blade's Edge Orchestrion Roll","Cloth of Happiness","Exciting Fiber","Resplendent Feather","White Lace Parasol"
 "Normal loot"
 "Gambler's Lure"

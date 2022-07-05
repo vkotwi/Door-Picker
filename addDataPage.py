@@ -5,6 +5,8 @@ import csv
 
 import pandas as pd
 
+buttons = {}
+
 events = {}
 # Gets names for buttons
 with open(r"events_and_rewards.txt") as file:
@@ -29,30 +31,32 @@ class AddDataPage(tk.Frame):
         btn_back_menu = ttk.Button(self, text="Back to Menu",
                                    command=lambda: controller.show_frame(False))
 
-        btn_back_menu.grid(row=0, column=0, pady=10, padx=10)
+        btn_back_menu.grid(row=0, column=0, pady=10, padx=10, sticky='w')
 
         lb_data.grid(row=0, column=2, pady=10, padx=10)
 
-        self.setup_radio_buttons("Events")
-        #self.setup_checkboxes()
+        self.add_buttons("Events", "radiobutton", 0)
+        self.row_counter = self.row_counter - len(events["Events"]) - 1
+        self.add_buttons("Door Events", "radiobutton", 1)
+        self.add_buttons("Notable Rewards", "checkbutton")
+        self.add_buttons("Normal loot", "checkbutton")
 
-    def setup_radio_buttons(self, key):
-        ttk.Label(self, text=key).grid(row=self.row_counter, column=0, pady=10, padx=10, sticky='w')
+    def add_buttons(self, key, btn_type, col=0):
+        ttk.Label(self, text=key).grid(row=self.row_counter, column=col, pady=10, padx=10, sticky='w')
         self.row_counter += 1
-        for ele in events[key]:
-            ttk.Radiobutton(self, text=ele, value=False).grid(row=self.row_counter, column=0, pady=5, padx=20, sticky='w')
-            self.row_counter += 1
-        # c1 = tk.Checkbutton(self, text='Python', variable=None, onvalue=1, offvalue=0, command=None)
-
-    def setup_checkboxes(self):
-        counter = 1
-        for key in events:
-            ttk.Label(self, text=key).grid(row=counter, column=0, pady=10, padx=10, sticky='w')
-            counter += 1
+        if btn_type == "radiobutton":
             for ele in events[key]:
-                tk.Radiobutton(self, text=ele).grid(row=counter, column=0, pady=5, padx=20, sticky='w')
-                counter += 1
-            # c1 = tk.Checkbutton(self, text='Python', variable=None, onvalue=1, offvalue=0, command=None)
+                btn_name = str("button_" + key + "_" + str(self.row_counter))
+                buttons[btn_name] = ttk.Radiobutton(self, text=ele, value=ele)
+                buttons[btn_name].grid(row=self.row_counter, column=col, pady=5, padx=20, sticky='w')
+                self.row_counter += 1
+        elif btn_type == "checkbutton":
+            for ele in events[key]:
+                btn_name = str("button_" + key + "_" + str(self.row_counter))
+                buttons[btn_name] = ttk.Checkbutton(self, text=ele, variable="")
+                buttons[btn_name].grid(row=self.row_counter, column=col, pady=5, padx=20, sticky='w')
+                self.row_counter += 1
+
 
     def gamblers_lure_rewards(self):
         pass
